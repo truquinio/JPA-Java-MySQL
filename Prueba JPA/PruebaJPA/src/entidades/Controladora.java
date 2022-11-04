@@ -5,6 +5,7 @@
  */
 package entidades;
 
+import java.util.ArrayList;
 import persistencia.ControladoraPersistencia;
 
 /**
@@ -17,9 +18,26 @@ public class Controladora {
     
     public void crearAlumno(Alumno alumno){
         
-        controlPersis.crearAlumno(alumno);
+        controlPersis.crearAlumno(alumno);  
+    }
+    
+    public void eliminarAlumno(int id){
         
+        controlPersis.eliminarAlumno(id);
+    }
+    
+    public void editarAlumno(Alumno alumno){
         
+        controlPersis.editarAlumno(alumno);
+    }
+    
+    public Alumno traerAlumno(int id){
+
+        return controlPersis.traerAlumno(id);
+    }
+    
+    public ArrayList<Alumno> traerListaAlumnos(){
         
+        return controlPersis.traerListaAlumnos();        
     }
 }

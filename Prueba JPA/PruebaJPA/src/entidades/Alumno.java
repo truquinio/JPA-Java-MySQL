@@ -73,7 +73,10 @@ public class Alumno implements Serializable {
     public void setFechaNac(Date fechaNac) {
         this.fechaNac = fechaNac;
     }
-    
-    
-    
+
+    //TOSTRING:
+    @Override
+    public String toString() {
+        return "Alumno{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNac=" + fechaNac + '}';
+    }
 }
