@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+EditorialServicio / EditorialJpaController:
+
+Esta clase tiene la responsabilidad de llevar adelante las funcionalidades necesarias para
+administrar editoriales (consulta, creación, modificación y eliminación)
  */
 package persistencia;
 
@@ -33,14 +34,17 @@ public class EditorialJpaController implements Serializable {
         emf = Persistence.createEntityManagerFactory("Ej01_LibreriaPU");
     }
     
-    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-
+    
+// MÉTODOS C.R.U.D.
+    
+    //CREAR:    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void create(Editorial editorial) {
         EntityManager em = null;
         try {
@@ -54,7 +58,8 @@ public class EditorialJpaController implements Serializable {
             }
         }
     }
-
+    
+    //EDITAR:   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void edit(Editorial editorial) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -78,6 +83,7 @@ public class EditorialJpaController implements Serializable {
         }
     }
 
+    //ELIMINAR: ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void destroy(int id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -99,6 +105,7 @@ public class EditorialJpaController implements Serializable {
         }
     }
 
+    //ENCONTRAR ENTIDADES:  ++++++++++++++++++++++++++++++++++++++++++++++++++++
     public List<Editorial> findEditorialEntities() {
         return findEditorialEntities(true, -1, -1);
     }
@@ -123,6 +130,7 @@ public class EditorialJpaController implements Serializable {
         }
     }
 
+    //ENCONTRAR:    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public Editorial findEditorial(int id) {
         EntityManager em = getEntityManager();
         try {
@@ -132,6 +140,7 @@ public class EditorialJpaController implements Serializable {
         }
     }
 
+    //CONTAR:   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public int getEditorialCount() {
         EntityManager em = getEntityManager();
         try {

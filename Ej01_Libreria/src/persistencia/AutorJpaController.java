@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+AutorServicio / AutorJPAController:
+
+Esta clase tiene la responsabilidad de llevar adelante las funcionalidades necesarias para
+administrar autores (consulta, creación, modificación y eliminación).
  */
 package persistencia;
 
@@ -33,14 +34,17 @@ public class AutorJpaController implements Serializable {
         emf = Persistence.createEntityManagerFactory("Ej01_LibreriaPU");
     }
     
-    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
+    
+// MÉTODOS C.R.U.D.
 
+    //CREAR:    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void create(Autor autor) {
         EntityManager em = null;
         try {
@@ -55,6 +59,7 @@ public class AutorJpaController implements Serializable {
         }
     }
 
+    //EDITAR:   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void edit(Autor autor) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -77,7 +82,8 @@ public class AutorJpaController implements Serializable {
             }
         }
     }
-
+    
+    //ELIMINAR: ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void destroy(int id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -99,6 +105,7 @@ public class AutorJpaController implements Serializable {
         }
     }
 
+    //ENCONTRAR ENTIDADES:  ++++++++++++++++++++++++++++++++++++++++++++++++++++
     public List<Autor> findAutorEntities() {
         return findAutorEntities(true, -1, -1);
     }
@@ -123,6 +130,7 @@ public class AutorJpaController implements Serializable {
         }
     }
 
+    //ENCONTRAR:    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public Autor findAutor(int id) {
         EntityManager em = getEntityManager();
         try {
@@ -132,6 +140,7 @@ public class AutorJpaController implements Serializable {
         }
     }
 
+    //CONTAR:   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public int getAutorCount() {
         EntityManager em = getEntityManager();
         try {

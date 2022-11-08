@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Entidad Autor: La entidad autor modela los autores de libros.
  */
 package entidades;
 
@@ -25,18 +23,21 @@ public class Autor implements Serializable {
     private int id;
     @Basic
     private String nombre;
-    
+
     //CONSTR:
     public Autor() {
     }
+
     public Autor(String nombre) {
         this.nombre = nombre;
     }
+
     public Autor(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
-    public String getNombre() {    
+
+    public String getNombre() {
         return nombre;
     }
 
@@ -44,9 +45,11 @@ public class Autor implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }

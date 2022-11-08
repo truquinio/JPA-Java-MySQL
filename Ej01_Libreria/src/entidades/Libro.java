@@ -1,7 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Entidad Libro
+La entidad libro modela los libros que están disponibles en la biblioteca para ser prestados. En
+esta entidad, el atributo “ejemplares” contiene la cantidad total de ejemplares de ese libro,
+mientras que el atributo “ejemplaresPrestados” contiene cuántos de esos ejemplares se
+encuentran prestados en este momento y el atributo “ejemplaresRestantes” contiene cuántos
+de esos ejemplares quedan para prestar.
  */
 package entidades;
 

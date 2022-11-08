@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+LibroServicio / LibroJpaController:
+
+Esta clase tiene la responsabilidad de llevar adelante las funcionalidades necesarias para
+administrar libros (consulta, creación, modificación y eliminación).
  */
 package persistencia;
 
@@ -33,7 +34,7 @@ public class LibroJpaController implements Serializable {
         emf = Persistence.createEntityManagerFactory("Ej01_LibreriaPU");
     }
     
-    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
     private EntityManagerFactory emf = null;
 
@@ -41,6 +42,9 @@ public class LibroJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
+// MÉTODOS C.R.U.D.
+
+    //CREAR:    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void create(Libro libro) {
         EntityManager em = null;
         try {
@@ -55,6 +59,7 @@ public class LibroJpaController implements Serializable {
         }
     }
 
+    //EDITAR:   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void edit(Libro libro) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
@@ -78,6 +83,7 @@ public class LibroJpaController implements Serializable {
         }
     }
 
+    //ELIMNINAR:    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void destroy(Long id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
@@ -99,6 +105,7 @@ public class LibroJpaController implements Serializable {
         }
     }
 
+    //ENCONTRAR ENTIDAD: +++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public List<Libro> findLibroEntities() {
         return findLibroEntities(true, -1, -1);
     }
@@ -123,6 +130,7 @@ public class LibroJpaController implements Serializable {
         }
     }
 
+    //ENCONTRAR:    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public Libro findLibro(Long id) {
         EntityManager em = getEntityManager();
         try {
@@ -132,6 +140,7 @@ public class LibroJpaController implements Serializable {
         }
     }
 
+    //CONTAR:   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public int getLibroCount() {
         EntityManager em = getEntityManager();
         try {
@@ -144,5 +153,4 @@ public class LibroJpaController implements Serializable {
             em.close();
         }
     }
-    
 }
