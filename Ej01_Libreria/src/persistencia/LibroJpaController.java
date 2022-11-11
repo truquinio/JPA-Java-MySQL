@@ -153,4 +153,46 @@ public class LibroJpaController implements Serializable {
             em.close();
         }
     }
+    
+    //MÉTODOS AGREGADOS:
+    
+    //CONSULTAR POR NOMBRE:     ++++++++++++++++++++++++++++++++++++++++++++++++
+    public void consutaLibroPorNombre(String titulo) {
+        EntityManager em = getEntityManager();
+        
+        try {
+            List<Libro> l = em.createQuery("SELECT a FROM Libro a "
+                    + "WHERE a.titulo = :titulo").setParameter("titulo", titulo).getResultList();
+            
+            for (Libro libroForEach : l) {
+                System.out.println(libroForEach);
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Nombre no encontrado");
+            System.out.println(e);
+        }
+    }
+    
+    //CONSULTAR POR AUTOR:      ++++++++++++++++++++++++++++++++++++++++++++++++
+     public void consultaLibroPorAutor(String autor) {
+         EntityManager em = getEntityManager();
+         
+        try {
+            //List<Libro> libros = em.createQuery("SELECT a FROM Libro a Autor b"
+            //  + " JOIN a.autor.nombre, b.nombre  = :autor").setParameter("autor", autor).getResultList();
+
+            List<Libro> libros = em.createQuery("SELECT a FROM Libro a"
+                    + " WHERE a.autor.nombre LIKE :autor").setParameter("autor", autor).getResultList();
+            
+            for (Libro libroForEach : libros) {
+                System.out.println(libroForEach.toString());
+                System.out.println("");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Nombre no encontrado");
+            System.out.println(e);
+        }
+    }
 }

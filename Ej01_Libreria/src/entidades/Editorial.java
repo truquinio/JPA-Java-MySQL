@@ -23,32 +23,49 @@ public class Editorial implements Serializable {
     private int id;
     @Basic
     private String nombre;
+    private boolean alta;
 
     //CONSTR:
     public Editorial() {
     }
 
-    public Editorial(String nombre) {
+    public Editorial(String nombre, boolean alta) {
         this.nombre = nombre;
-    }
-    public Editorial(int id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
+        this.alta = alta;
     }
 
-    //GyS:
-    public String getNombre() {
-        return nombre;
-    }
-    public void setNombre(String nombre) {
+    public Editorial(int id, String nombre, boolean alta) {
+        this.id = id;
         this.nombre = nombre;
+        this.alta = alta;
     }
+    
+    //GyS:
+
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public boolean isAlta() {
+        return alta;
+    }
+
+    public void setAlta(boolean alta) {
+        this.alta = alta;
+    }
+    
 
     @Override
     public int hashCode() {
@@ -59,7 +76,7 @@ public class Editorial implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        // Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Editorial)) {
             return false;
         }
@@ -73,6 +90,10 @@ public class Editorial implements Serializable {
     //ToString:
     @Override
     public String toString() {
-        return "Editorial | id: " + id + " | Nombre: " + nombre;
+        return "Editorial | id: " + id + " | Nombre: " + nombre + " | Alta: " + alta;
+    }
+    
+    public void imprimirLindo() {
+        System.out.printf("%5d %-20s %-10b\n", id, nombre, alta);
     }
 }

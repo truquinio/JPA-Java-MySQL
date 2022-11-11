@@ -24,7 +24,6 @@ public class ControladoraPersistencia {
     EditorialJpaController editorialJpa = new EditorialJpaController();
     LibroJpaController libroJpa = new LibroJpaController();
 
-    
     //AUTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void crearAutor(Autor autor) {
         autorJpa.create(autor);
@@ -61,16 +60,15 @@ public class ControladoraPersistencia {
         return listaAutores;
     }
 
-
     //EDITORIAL ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void crearEditorial(Editorial editorial) {
-        
+
         editorialJpa.create(editorial);
-        
-        }
+
+    }
 
     public void eliminarEditorial(int id) {
-        
+
         try {
             editorialJpa.destroy(id);
         } catch (NonexistentEntityException ex) {
@@ -80,7 +78,7 @@ public class ControladoraPersistencia {
     }
 
     public void editarEditorial(Editorial editorial) {
-        
+
         try {
             editorialJpa.edit(editorial);
         } catch (Exception ex) {
@@ -89,7 +87,7 @@ public class ControladoraPersistencia {
     }
 
     public Editorial traerEditorial(int id) {
-        
+
         return editorialJpa.findEditorial(id);
     }
 
@@ -101,16 +99,16 @@ public class ControladoraPersistencia {
 
         return listaEditoriales;
     }
-    
+
     //LIBRO ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void crearLibro(Libro libro) {
-        
+
         libroJpa.create(libro);
-        
-        }
+
+    }
 
     public void eliminarLibro(Long isbn) {
-        
+
         try {
             libroJpa.destroy(isbn);
         } catch (NonexistentEntityException ex) {
@@ -119,7 +117,7 @@ public class ControladoraPersistencia {
     }
 
     public void editarLibro(Libro libro) {
-        
+
         try {
             libroJpa.edit(libro);
         } catch (Exception ex) {
@@ -128,7 +126,7 @@ public class ControladoraPersistencia {
     }
 
     public Libro traerLibro(Long isbn) {
-        
+
         return libroJpa.findLibro(isbn);
     }
 
@@ -139,5 +137,10 @@ public class ControladoraPersistencia {
         ArrayList<Libro> listaLibros = new ArrayList<Libro>(listitaLibros);
 
         return listaLibros;
+    }
+
+    public void traerLibroPorTitulo(String titulo) {
+        
+        libroJpa.consutaLibroPorNombre(titulo);
     }
 }

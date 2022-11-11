@@ -24,6 +24,7 @@ import entidades.ControladoraJpa;
 import entidades.Editorial;
 import entidades.Libro;
 import persistencia.ControladoraPersistencia;
+import service.ServicioMenu;
 
 /**
  *
@@ -77,5 +78,8 @@ public class MainClass {
         Libro objetoLibro2 = new Libro(456L, "El chiquito de Fernando", 2020, 10, 2, 8, true, objetoAutor2, objetoEditorial2);
         controlJpa.crearLibro(objetoLibro2);
         */
+        
+        ServicioMenu ServMenu = new ServicioMenu();
+        ServMenu.menuprincipal();
     }
 }

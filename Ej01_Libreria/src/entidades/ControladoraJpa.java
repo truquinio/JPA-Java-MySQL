@@ -13,87 +13,90 @@ import persistencia.ControladoraPersistencia;
  * @author FT
  */
 public class ControladoraJpa {
-    
+
     ControladoraPersistencia controlPersis = new ControladoraPersistencia();
 
 //AUTOR:
-    public void crearAutor(Autor autor){
-        
-        controlPersis.crearAutor(autor);  
+    public void crearAutor(Autor autor) {
+
+        controlPersis.crearAutor(autor);
     }
-    
-    public void eliminarAutor(int id){
-        
+
+    public void eliminarAutor(int id) {
+
         controlPersis.eliminarAutor(id);
     }
-    
-    public void editarAutor(Autor autor){
-        
+
+    public void editarAutor(Autor autor) {
+
         controlPersis.editarAutor(autor);
     }
-    
-    public Autor traerAutor(int id){
+
+    public Autor traerAutor(int id) {
 
         return controlPersis.traerAutor(id);
     }
-    
-    public ArrayList<Autor> traerListaAutors(){
-        
-        return controlPersis.traerListaAutores();        
+
+    public ArrayList<Autor> traerListaAutores() {
+
+        return controlPersis.traerListaAutores();
     }
-    
 
 //EDITORIAL:
-    public void crearEditorial(Editorial editorial){
-        
-        controlPersis.crearEditorial(editorial);  
+    public void crearEditorial(Editorial editorial) {
+
+        controlPersis.crearEditorial(editorial);
     }
-    
-    public void eliminarEditorial(int id){
-        
+
+    public void eliminarEditorial(int id) {
+
         controlPersis.eliminarEditorial(id);
     }
-    
-    public void editarEditorial(Editorial editorial){
-        
+
+    public void editarEditorial(Editorial editorial) {
+
         controlPersis.editarEditorial(editorial);
     }
-    
-    public Editorial traerEditorial(int id){
+
+    public Editorial traerEditorial(int id) {
 
         return controlPersis.traerEditorial(id);
     }
-    
-    public ArrayList<Editorial> traerListaEditorials(){
-        
-        return controlPersis.traerListaEditoriales();        
-    }
 
+    public ArrayList<Editorial> traerListaEditoriales() {
+
+        return controlPersis.traerListaEditoriales();
+    }
 
 //LIBRO:
-    public void crearLibro(Libro libro){
-        
-        controlPersis.crearLibro(libro);  
+    public void crearLibro(Libro libro) {
+
+        controlPersis.crearLibro(libro);
     }
-    
-    public void eliminarLibro(Long isbn){
-        
+
+    public void eliminarLibro(Long isbn) {
+
         controlPersis.eliminarLibro(isbn);
     }
-    
-    public void editarLibro(Libro libro){
-        
+
+    public void editarLibro(Libro libro) {
+
         controlPersis.editarLibro(libro);
     }
-    
-    public Libro traerLibro(Long isbn){
+
+    public Libro traerLibro(Long isbn) {
 
         return controlPersis.traerLibro(isbn);
     }
-    
-    public ArrayList<Libro> traerListaLibros(){
+
+    public ArrayList<Libro> traerListaLibros() {
+
+        return controlPersis.traerListaLibros();
+    }
+
+    public void traerLibroPorTitulo(String buscarPorNombre) {
+       controlPersis.traerListaLibros();
         
-        return controlPersis.traerListaLibros();        
+        controlPersis.traerLibroPorTitulo(buscarPorNombre);
     }
 }
-
