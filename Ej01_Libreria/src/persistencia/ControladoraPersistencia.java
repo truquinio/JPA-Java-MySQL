@@ -6,8 +6,10 @@
 package persistencia;
 
 import entidades.Autor;
+import entidades.Cliente;
 import entidades.Editorial;
 import entidades.Libro;
+import entidades.Prestamo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -23,6 +25,8 @@ public class ControladoraPersistencia {
     AutorJpaController autorJpa = new AutorJpaController();
     EditorialJpaController editorialJpa = new EditorialJpaController();
     LibroJpaController libroJpa = new LibroJpaController();
+    PrestamoJpaController prestamoJpa = new PrestamoJpaController();
+    ClienteJpaController clienteJpa = new ClienteJpaController();
 
     //AUTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void crearAutor(Autor autor) {
@@ -140,7 +144,73 @@ public class ControladoraPersistencia {
     }
 
     public void traerLibroPorTitulo(String titulo) {
-        
+
         libroJpa.consutaLibroPorNombre(titulo);
     }
+
+    //PRÉSTAMO +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public void crearPrestamo(Prestamo prestamo) {
+        prestamoJpa.create(prestamo);
+    }
+
+    public void eliminarPrestamo(int id) {
+        try {
+            prestamoJpa.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void editarPrestamo(Prestamo prestamo) {
+        try {
+            prestamoJpa.edit(prestamo);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Prestamo traerPrestamo(int id) {
+        return prestamoJpa.findPrestamo(id);
+    }
+
+    public ArrayList<Prestamo> traerListaPrestamos() {
+        List<Prestamo> listap = prestamoJpa.findPrestamoEntities();
+        ArrayList<Prestamo> listaPrestamo = new ArrayList<>(listap);
+        return listaPrestamo;
+    }
+    
+     public void traerPrestamoPorCliente(String cliente) {
+        prestamoJpa.consultaPrestamoPorCliente(cliente);
+    }
+    
+    //CLIENTE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public void crearCliente(Cliente cliente) {
+        clienteJpa.create(cliente);
+    }
+
+    public void eliminarCliente(int id) {
+        try {
+            clienteJpa.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void editarCliente(Cliente cliente) {
+        try {
+            clienteJpa.edit(cliente);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Cliente traerCliente(int id) {
+        return clienteJpa.findCliente(id);
+    }
+
+    public ArrayList<Cliente> traerListaClientes() {
+        List<Cliente> lista = clienteJpa.findClienteEntities();
+        ArrayList<Cliente> listaClientes = new ArrayList<>(lista);
+        return listaClientes;
+    }   
 }

@@ -15,8 +15,9 @@ import persistencia.ControladoraPersistencia;
 public class ControladoraJpa {
 
     ControladoraPersistencia controlPersis = new ControladoraPersistencia();
+    
 
-//AUTOR:
+//AUTOR:  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void crearAutor(Autor autor) {
 
         controlPersis.crearAutor(autor);
@@ -42,7 +43,7 @@ public class ControladoraJpa {
         return controlPersis.traerListaAutores();
     }
 
-//EDITORIAL:
+//EDITORIAL:  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void crearEditorial(Editorial editorial) {
 
         controlPersis.crearEditorial(editorial);
@@ -68,7 +69,7 @@ public class ControladoraJpa {
         return controlPersis.traerListaEditoriales();
     }
 
-//LIBRO:
+//LIBRO:  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void crearLibro(Libro libro) {
 
         controlPersis.crearLibro(libro);
@@ -95,8 +96,64 @@ public class ControladoraJpa {
     }
 
     public void traerLibroPorTitulo(String buscarPorNombre) {
-       controlPersis.traerListaLibros();
-        
+        controlPersis.traerListaLibros();
+
         controlPersis.traerLibroPorTitulo(buscarPorNombre);
+    }
+
+    //PRÉSTAMO:  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public void crearPrestamo(Prestamo prestamo) {
+
+        controlPersis.crearPrestamo(prestamo);
+    }
+
+    public void eliminarPrestamo(int id) {
+
+        controlPersis.eliminarPrestamo(id);
+    }
+
+    public void editarPrestamo(Prestamo prestamo) {
+
+        controlPersis.editarPrestamo(prestamo);
+    }
+
+    public Prestamo traerPrestamo(int id) {
+
+        return controlPersis.traerPrestamo(id);
+    }
+
+    public ArrayList<Prestamo> traerListaPrestamos() {
+
+        return controlPersis.traerListaPrestamos();
+    }
+
+    public void traerPrestamoPorCliente(String cliente) {
+        controlPersis.traerPrestamoPorCliente(cliente);
+    }
+
+    //CLIENTE:  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public void crearCliente(Cliente cliente) {
+
+        controlPersis.crearCliente(cliente);
+    }
+
+    public void eliminarCliente(int id) {
+
+        controlPersis.eliminarCliente(id);
+    }
+
+    public void editarCliente(Cliente cliente) {
+
+        controlPersis.editarCliente(cliente);
+    }
+
+    public Cliente traerCliente(int id) {
+
+        return controlPersis.traerCliente(id);
+    }
+
+    public ArrayList<Cliente> traerListaClientes() {
+
+        return controlPersis.traerListaClientes();
     }
 }

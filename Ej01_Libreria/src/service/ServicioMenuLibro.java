@@ -30,7 +30,7 @@ public class ServicioMenuLibro {
     public void menuLibro() {
         do {
             do {
-                System.out.println("\nElija una opción:\n1. Crear libro \n2. Mostrar libro\n3. Editar libro\n4. Eliminar libro\n0. Menú principal");
+                System.out.println("\nMENÚ LIBRO:\n\nElija una opción:\n1. Crear libro \n2. Mostrar libro\n3. Editar libro\n4. Eliminar libro\n0. Menú principal");
 
                 try {
                     opcion = 20; // se reinicia con una opcion diferente a una valida

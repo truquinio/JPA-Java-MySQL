@@ -31,7 +31,7 @@ public class LibroJpaController implements Serializable {
     
     //CONSTR creado para poder instanciar y llamar a los métodos.-
     public LibroJpaController(){
-        emf = Persistence.createEntityManagerFactory("Ej01_LibreriaPU");
+        emf = Persistence.createEntityManagerFactory("LibreriaJPAPU");
     }
     
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

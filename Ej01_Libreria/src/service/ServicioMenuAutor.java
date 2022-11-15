@@ -25,14 +25,14 @@ public class ServicioMenuAutor {
     public void menuAutor() {
         do {
             do {
-                System.out.println("Ingrese la operacion a realizar:\n1. Crear Autor \n2. Mostrar Autor\n3. Editar Autor\n4. Eliminar Autor\n0. Menú principal");
+                System.out.println("\nMENÚ AUTOR:\n\nElija una opción:\n1. Crear Autor \n2. Mostrar Autor\n3. Editar Autor\n4. Eliminar Autor\n0. Menú principal");
 
                 try {
                     opcion = 20; // se reinicia con una opcion diferente a una valida
                     opcion = Integer.parseInt(leer.next());
                     break;
                 } catch (Exception ex) {
-                    System.out.println("Error, ingrese un numero ");
+                    System.out.println("Error, ingrese un número ");
                 }
 
             } while (opcion != 1 && opcion != 2 && opcion != 3 && opcion != 0);
@@ -60,7 +60,7 @@ public class ServicioMenuAutor {
                     System.out.println("Editar autor: ");
                     mostrarListaAutores();
                     
-                    System.out.println("Seleccione el Id del autor a editar:");
+                    System.out.println("Seleccione Id del autor a editar:");
                     int idAutor1 = leer.nextInt();
                     
                     Autor objetoAutorEdit1 = controlJpa.traerAutor(idAutor1);

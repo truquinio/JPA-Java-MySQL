@@ -31,7 +31,7 @@ public class AutorJpaController implements Serializable {
     
     //CONSTR creado para poder instanciar y llamar a los métodos.-
     public AutorJpaController(){
-        emf = Persistence.createEntityManagerFactory("Ej01_LibreriaPU");
+        emf = Persistence.createEntityManagerFactory("LibreriaJPAPU");
     }
     
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

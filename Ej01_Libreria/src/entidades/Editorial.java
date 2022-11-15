@@ -90,7 +90,7 @@ public class Editorial implements Serializable {
     //ToString:
     @Override
     public String toString() {
-        return "Editorial | id: " + id + " | Nombre: " + nombre + " | Alta: " + alta;
+        return "Editorial || Id: " + id + " | Nombre: " + nombre + " | Alta: " + alta;
     }
     
     public void imprimirLindo() {

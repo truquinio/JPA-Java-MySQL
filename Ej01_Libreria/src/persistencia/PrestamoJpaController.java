@@ -1,19 +1,17 @@
 /*
-EditorialServicio / EditorialJpaController:
-
-Esta clase tiene la responsabilidad de llevar adelante las funcionalidades necesarias para
-administrar editoriales (consulta, creación, modificación y eliminación)
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package persistencia;
 
-import entidades.Editorial;
-import java.io.Serializable;
+import entidades.Prestamo;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import servicio.exceptions.NonexistentEntityException;
@@ -22,35 +20,29 @@ import servicio.exceptions.NonexistentEntityException;
  *
  * @author FT
  */
-public class EditorialJpaController implements Serializable {
+public class PrestamoJpaController {
 
-    //CONSTR x defecto:
-    public EditorialJpaController(EntityManagerFactory emf) {
+    public PrestamoJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
-    //CONSTR creado para poder instanciar y llamar a los métodos.-
-    public EditorialJpaController(){
+
+    //  CREAR CONSTRUCTOR PARA CREAR LA ENTITY MANAGER FACTORY.-
+    public PrestamoJpaController() {
         emf = Persistence.createEntityManagerFactory("LibreriaJPAPU");
     }
-    
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-    
-// MÉTODOS C.R.U.D.
-    
-    //CREAR:    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    public void create(Editorial editorial) {
+
+    public void create(Prestamo prestamo) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(editorial);
+            em.persist(prestamo);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -58,21 +50,20 @@ public class EditorialJpaController implements Serializable {
             }
         }
     }
-    
-    //EDITAR:   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    public void edit(Editorial editorial) throws NonexistentEntityException, Exception {
+
+    public void edit(Prestamo prestamo) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            editorial = em.merge(editorial);
+            prestamo = em.merge(prestamo);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = editorial.getId();
-                if (findEditorial(id) == null) {
-                    throw new NonexistentEntityException("The editorial with id " + id + " no longer exists.");
+                int id = prestamo.getId();
+                if (findPrestamo(id) == null) {
+                    throw new NonexistentEntityException("The prestamo with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -83,20 +74,19 @@ public class EditorialJpaController implements Serializable {
         }
     }
 
-    //ELIMINAR: ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void destroy(int id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Editorial editorial;
+            Prestamo prestamo;
             try {
-                editorial = em.getReference(Editorial.class, id);
-                editorial.getId();
+                prestamo = em.getReference(Prestamo.class, id);
+                prestamo.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The editorial with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The prestamo with id " + id + " no longer exists.", enfe);
             }
-            em.remove(editorial);
+            em.remove(prestamo);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -105,20 +95,19 @@ public class EditorialJpaController implements Serializable {
         }
     }
 
-    //ENCONTRAR ENTIDADES:  ++++++++++++++++++++++++++++++++++++++++++++++++++++
-    public List<Editorial> findEditorialEntities() {
-        return findEditorialEntities(true, -1, -1);
+    public List<Prestamo> findPrestamoEntities() {
+        return findPrestamoEntities(true, -1, -1);
     }
 
-    public List<Editorial> findEditorialEntities(int maxResults, int firstResult) {
-        return findEditorialEntities(false, maxResults, firstResult);
+    public List<Prestamo> findPrestamoEntities(int maxResults, int firstResult) {
+        return findPrestamoEntities(false, maxResults, firstResult);
     }
 
-    private List<Editorial> findEditorialEntities(boolean all, int maxResults, int firstResult) {
+    private List<Prestamo> findPrestamoEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Editorial.class));
+            cq.select(cq.from(Prestamo.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -130,27 +119,42 @@ public class EditorialJpaController implements Serializable {
         }
     }
 
-    //ENCONTRAR:    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    public Editorial findEditorial(int id) {
+    public Prestamo findPrestamo(int id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Editorial.class, id);
+            return em.find(Prestamo.class, id);
         } finally {
             em.close();
         }
     }
 
-    //CONTAR:   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    public int getEditorialCount() {
+    public int getPrestamoCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Editorial> rt = cq.from(Editorial.class);
+            Root<Prestamo> rt = cq.from(Prestamo.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
         } finally {
             em.close();
+        }
+    }
+
+    void consultaPrestamoPorCliente(String cliente) {
+        EntityManager em = getEntityManager();
+        
+        try {
+            List<Prestamo> prestamos = em.createQuery("SELECT a FROM Prestamo a"
+                    + " WHERE a.cliente.nombre = :cliente").setParameter("cliente", cliente).getResultList();
+            for (Prestamo prestamo : prestamos) {
+                System.out.println(prestamo.toString());
+                System.out.println("");
+            }
+            System.out.println("----------------------");
+        } catch (Exception e) {
+            System.out.println("Editorial no encontrada");
+            System.out.println(e);
         }
     }
 }

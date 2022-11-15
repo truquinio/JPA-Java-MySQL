@@ -25,7 +25,7 @@ public class ServicioMenuEditorial {
     public void menuEditorial() {
         do {
             do {
-                System.out.println("Ingrese la operacion a realizar:\n1. Crear Editorial\n2. Mostrar Editorial\n3. Editar Editorial\n4. Eliminar Editorial\n0. Menú principal");
+                System.out.println("\nMENÚ EDITORIAL:\n\nElija una opción:\n1. Crear Editorial\n2. Mostrar Editorial\n3. Editar Editorial\n4. Eliminar Editorial\n0. Menú principal");
 
                 try {
                     opcion = 20; // se reinicia con una opcion diferente a una valida
@@ -40,7 +40,7 @@ public class ServicioMenuEditorial {
             switch (opcion) {
 
                 case 1:
-                    System.out.println("Crear una Editorial ingresando nombre:");
+                    System.out.println("Crear Editorial por nombre:");
                     String nombre = leer.next();
                     
                     Editorial objetoEditorial = new Editorial(nombre, true);
@@ -50,14 +50,14 @@ public class ServicioMenuEditorial {
                 case 2:
                     mostrarListaEditoriales();
                             
-                    System.out.println("Ingrese id de la Editorial:");
+                    System.out.println("Ingrese Id de la Editorial:");
                     int id = leer.nextInt();
                     
                     System.out.println(controlJpa.traerEditorial(id));
                     break;
 
                 case 3:
-                    System.out.println("Editar una Editorial: ");
+                    System.out.println("Editar Editorial:");
                     mostrarListaEditoriales();
                     
                     System.out.println("Ingrese Id de la editorial a editar: ");
@@ -76,7 +76,7 @@ public class ServicioMenuEditorial {
     }
 //Submetodos
      public void mostrarListaEditoriales(){
-        System.out.println("La lista total de autores es la siguiente: ");
+        System.out.println("Lista total de autores:");
         ArrayList<Editorial>listaEditoriales = controlJpa.traerListaEditoriales();
         
         System.out.printf("%5s %-20s %-10s\n", "ID","NOMBRE", "ALTA");

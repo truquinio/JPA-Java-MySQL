@@ -22,11 +22,14 @@ public class ServicioMenu {
     ServicioMenuAutor servMenuAutor = new ServicioMenuAutor();
     ServicioMenuEditorial servMenuEditorial = new ServicioMenuEditorial();
     ServicioMenuLibro servMenuLibro = new ServicioMenuLibro();
+    ServicioMenuCliente servMenuCliente = new ServicioMenuCliente();
+    ServicioMenuPrestamo servMenuPrestamo = new ServicioMenuPrestamo();
+    
 
     public void menuprincipal() {
         do {
             do {
-                System.out.println("\nBIENVENID@ A LA LIBRERÍA:\n\nElija una opción:\n1. Autor\n2. Editorial\n3. Libro\n0. Salir");
+                System.out.println("\nBIENVENID@ A LA LIBRERÍA:\n\nElija una opción:\n1. Autor\n2. Editorial\n3. Libro\n4. Cliente\n5. Préstamo\n0. Salir");
 
                 try {
                     opcion = 20; // se reinicia con una opcion diferente a una valida
@@ -51,7 +54,18 @@ public class ServicioMenu {
                 case 3:
                     servMenuLibro.menuLibro();
                     break;
+                    
+                 case 4:
+                    servMenuCliente.menuCliente();
+                    break;
+                    
+                case 5:
+                    servMenuPrestamo.menuPrestamo();
+                    break;
+                    
+                case 0:
+                break;
             }
-        } while (opcion != 0);
+        } while (opcion != 0);   
     }
 }

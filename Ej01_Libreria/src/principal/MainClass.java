@@ -19,11 +19,7 @@ De esta manera se habrá creado una base de datos vacía llamada librería.
  */
 package principal;
 
-import entidades.Autor;
 import entidades.ControladoraJpa;
-import entidades.Editorial;
-import entidades.Libro;
-import persistencia.ControladoraPersistencia;
 import service.ServicioMenu;
 
 /**
@@ -35,6 +31,7 @@ public class MainClass {
     public static void main(String[] args) {
 
         //ControladoraPersistencia controlPersis = new ControladoraPersistencia();
+        
         ControladoraJpa controlJpa = new ControladoraJpa();
 
         /*
